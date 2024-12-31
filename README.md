@@ -10,7 +10,13 @@ This project is a recreation of these iconic sites, lovingly pieced together usi
 
 The 404 error image is missing:
 
-- four_o_four.png
+- images/four_o_four.png
+
+## Sharesnap
+
+I'm not sure if this existed at the time, but its referenced in the code and I could not find it.
+
+- images/poster.png
 
 ## Raja's Arcade
 
