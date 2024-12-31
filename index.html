@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thumbnail Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 2px; /* Reduced gap between boxes */
+        }
+        .thumbnail {
+            text-align: center;
+        }
+        .thumbnail img {
+            width: 150px; /* Fixed width */
+            height: 150px; /* Fixed height */
+            object-fit: cover; /* Maintain aspect ratio */
+            border-radius: 1px;
+        }
+        .thumbnail p {
+            margin-top: 10px;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --background-color: #333;
+                --text-color: #fff;
+            }
+        }
+        @media (prefers-color-scheme: light) {
+            :root {
+                --background-color: #fff;
+                --text-color: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <div class="thumbnail">
+            <a href="coloradomountainplaza.com/index.html" target="_blank">
+                <img src="images/colorado_mall.png" alt="Thumbnail 1">
+            </a>
+            <p>Colorado Mall</p>
+        </div>
+        <div class="thumbnail">
+            <a href="libertygardensboston.com/index.html" target="_blank">
+                <img src="images/liberty_gardens_mall.png" alt="Thumbnail 2">
+            </a>
+            <p>Liberty Gardens Mall</p>
+        </div>
+        <div class="thumbnail">
+            <a href="petvillepets.com/index.html" target="_blank">
+                <img src="images/petville.png" alt="Thumbnail 3">
+            </a>
+            <p>Petville</p>
+        </div>
+        <div class="thumbnail">
+            <a href="rajasarcade.com/index.html" target="_blank">
+                <img src="images/rajs_arcade.png" alt="Thumbnail 4">
+            </a>
+            <p>Raj's Arcade</p>
+        </div>
+        <div class="thumbnail">
+            <a href="rajasarcade.com/index_activated.html" target="_blank">
+                <img src="images/rajs_arcade_secret.png" alt="Thumbnail 4">
+            </a>
+            <p>Raj's Arcade - Hidden secret enabled</p>
+        </div>
+        <div class="thumbnail">
+            <a href="sharesnapshare.com/index.html" target="_blank">
+                <img src="images/sharesnap.png" alt="Thumbnail 5">
+            </a>
+            <p>Sharesnap</p>
+        </div>
+        <div class="thumbnail">
+            <a href="springshospital.org/index.html" target="_blank">
+                <img src="images/springs_hospital.png" alt="Thumbnail 6">
+            </a>
+            <p>Spring's Hospital</p>
+        </div>
+        <div class="thumbnail">
+            <a href="yummyswirls.com/index.html" target="_blank">
+                <img src="images/swirls.png" alt="Thumbnail 7">
+            </a>
+            <p>Swirls</p>
+        </div>
+        <div class="thumbnail">
+            <a href="westonspharmacy.com/index.html" target="_blank">
+                <img src="images/westons_pharmacy.png" alt="Thumbnail 8">
+            </a>
+            <p>Wenston's Pharmacy</p>
+        </div>
+    </div>
+</body>
+</html>
