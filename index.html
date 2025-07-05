@@ -17,6 +17,7 @@
             background-color: #222;
             color: #ddd;
             filter: brightness(70%) sepia(20%);
+            box-sizing: border-box; 
         }
 
         body::before {
@@ -32,8 +33,11 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; 
+            max-width: 1200px;
+            margin: 0 auto; 
+            padding: 20px 0;
         }
 
         .thumbnail {
@@ -41,26 +45,104 @@
         }
 
         .thumbnail img {
-            width: 150px;
-            height: 150px;
+            width: 100%;
+            max-width: 200px; 
+            height: auto; 
             object-fit: cover;
             border-radius: 1px;
             border: 2px solid #555;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            transition: transform 0.2s ease-in-out; 
+        }
+
+        .thumbnail img:hover {
+            transform: scale(1.05); 
         }
 
         .thumbnail p {
             margin-top: 10px;
+            font-size: 0.9em; 
+            word-wrap: break-word;
+            padding: 0 5px;
         }
 
         .large-text {
             font-family: 'LastOfUsFont', Arial, sans-serif;
-            font-size: 90px;
+            font-size: 90px; 
             font-weight: bold;
             text-align: center;
             margin-top: 40px;
             color: #ddd;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            word-wrap: break-word;
+            padding: 0 10px;
+        }
+
+       
+        @media (max-width: 1024px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .large-text {
+                font-size: 70px;
+            }
+        }
+
+        
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 10px;
+            }
+
+            .thumbnail img {
+                max-width: 150px; 
+            }
+
+            .large-text {
+                font-size: 50px;
+                margin-top: 30px;
+            }
+        }
+
+       
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr; 
+                gap: 15px;
+            }
+
+            .thumbnail img {
+                max-width: 180px; 
+            }
+
+            .thumbnail p {
+                font-size: 1em;
+            }
+
+            .large-text {
+                font-size: 35px;
+                margin-top: 20px;
+            }
+        }
+
+        /* Very small mobile devices */
+        @media (max-width: 320px) {
+            .large-text {
+                font-size: 28px;
+            }
+            .thumbnail img {
+                max-width: 120px;
+            }
+            .thumbnail p {
+                font-size: 0.85em;
+            }
         }
     </style>
 </head>
