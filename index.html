@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Last of Websites</title>
+    <title>The Last of Data</title>
     <style>
         @font-face {
             font-family: 'LastOfUsFont';
@@ -17,7 +17,10 @@
             background-color: #222;
             color: #ddd;
             filter: brightness(70%) sepia(20%);
-            box-sizing: border-box; 
+            box-sizing: border-box;
+            position: relative; /* Added for footer positioning */
+            min-height: 100vh; /* Ensures body is at least full viewport height */
+            padding-bottom: 40px; /* Space for the footer */
         }
 
         body::before {
@@ -33,10 +36,10 @@
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 20px; 
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             max-width: 1200px;
-            margin: 0 auto; 
+            margin: 0 auto;
             padding: 20px 0;
         }
 
@@ -46,29 +49,29 @@
 
         .thumbnail img {
             width: 100%;
-            max-width: 200px; 
-            height: auto; 
+            max-width: 200px;
+            height: auto;
             object-fit: cover;
             border-radius: 1px;
             border: 2px solid #555;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-            transition: transform 0.2s ease-in-out; 
+            transition: transform 0.2s ease-in-out;
         }
 
         .thumbnail img:hover {
-            transform: scale(1.05); 
+            transform: scale(1.05);
         }
 
         .thumbnail p {
             margin-top: 10px;
-            font-size: 0.9em; 
+            font-size: 0.9em;
             word-wrap: break-word;
             padding: 0 5px;
         }
 
         .large-text {
             font-family: 'LastOfUsFont', Arial, sans-serif;
-            font-size: 90px; 
+            font-size: 90px;
             font-weight: bold;
             text-align: center;
             margin-top: 40px;
@@ -78,7 +81,29 @@
             padding: 0 10px;
         }
 
-       
+        /* Bottom reader styles */
+        .source-code-reader {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+            color: #bbb;
+            font-size: 0.8em;
+            z-index: 100; /* Ensure it's above other content */
+        }
+
+        .source-code-reader a {
+            color: #88aadd; /* A subtle blue for the link */
+            text-decoration: none;
+        }
+
+        .source-code-reader a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 1024px) {
             .gallery {
                 grid-template-columns: repeat(2, 1fr);
@@ -90,15 +115,14 @@
             }
         }
 
-        
         @media (max-width: 768px) {
             .gallery {
-                grid-template-columns: repeat(2, 1fr); 
+                grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
             }
 
             .thumbnail img {
-                max-width: 150px; 
+                max-width: 150px;
             }
 
             .large-text {
@@ -107,19 +131,18 @@
             }
         }
 
-       
         @media (max-width: 480px) {
             body {
                 padding: 10px;
             }
 
             .gallery {
-                grid-template-columns: 1fr; 
+                grid-template-columns: 1fr;
                 gap: 15px;
             }
 
             .thumbnail img {
-                max-width: 180px; 
+                max-width: 180px;
             }
 
             .thumbnail p {
@@ -221,6 +244,10 @@
             <p>TheLastofUsPart2-SeattleMap.pdf</p>
         </div>
     </div>
-    <div class="large-text">The Last of Websites</div>
+    <div class="large-text">The Last of Data</div>
+
+    <div class="source-code-reader">
+        source code available here: <a href="https://github.com/ddmunhoz/thelastofwebsites" target="_blank">https://github.com/ddmunhoz/thelastofwebsites</a>
+    </div>
 </body>
 </html>
