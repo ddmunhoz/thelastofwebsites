@@ -18,9 +18,9 @@
             color: #ddd;
             filter: brightness(70%) sepia(20%);
             box-sizing: border-box;
-            position: relative; /* Added for footer positioning */
-            min-height: 100vh; /* Ensures body is at least full viewport height */
-            padding-bottom: 40px; /* Space for the footer */
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 40px;
         }
 
         body::before {
@@ -32,6 +32,18 @@
             height: 100%;
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
             z-index: -1;
+        }
+
+        .gallery-header {
+            font-family: 'LastOfUsFont', Arial, sans-serif;
+            font-size: 45px;
+            font-weight: bold;
+            color: #ddd;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            margin: 40px auto 10px auto;
+            max-width: 1200px;
+            padding: 0 10px;
         }
 
         .gallery {
@@ -81,6 +93,18 @@
             padding: 0 10px;
         }
 
+        .medium-text {
+            font-family: 'LastOfUsFont', Arial, sans-serif;
+            font-size: 45px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 40px;
+            color: #ddd;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            word-wrap: break-word;
+            padding: 0 10px;
+        }
+
         /* Bottom reader styles */
         .source-code-reader {
             position: absolute;
@@ -89,19 +113,48 @@
             width: 100%;
             text-align: center;
             padding: 10px 0;
-            background-color: rgba(0, 0, 0, 0.5); /* Slightly transparent background */
+            background-color: rgba(0, 0, 0, 0.5);
             color: #bbb;
             font-size: 0.8em;
-            z-index: 100; /* Ensure it's above other content */
+            z-index: 100;
         }
 
         .source-code-reader a {
-            color: #88aadd; /* A subtle blue for the link */
+            color: #88aadd;
             text-decoration: none;
         }
 
         .source-code-reader a:hover {
             text-decoration: underline;
+        }
+
+        /* --- TV Flicker Effect CSS --- */
+        @keyframes flicker {
+            0% { opacity: 1; filter: brightness(100%); }
+            5% { opacity: 0.8; filter: brightness(120%); }
+            10% { opacity: 1; filter: brightness(90%); }
+            15% { opacity: 0.7; filter: brightness(130%); }
+            20% { opacity: 1; filter: brightness(100%); }
+            25% { opacity: 0.9; filter: brightness(110%); }
+            30% { opacity: 1; filter: brightness(100%); }
+            35% { opacity: 0.85; filter: brightness(125%); }
+            40% { opacity: 1; filter: brightness(95%); }
+            45% { opacity: 0.75; filter: brightness(135%); }
+            50% { opacity: 1; filter: brightness(100%); }
+            55% { opacity: 0.95; filter: brightness(105%); }
+            60% { opacity: 1; filter: brightness(100%); }
+            65% { opacity: 0.8; filter: brightness(120%); }
+            70% { opacity: 1; filter: brightness(100%); }
+            75% { opacity: 0.7; filter: brightness(130%); }
+            80% { opacity: 1; filter: brightness(90%); }
+            85% { opacity: 0.8; filter: brightness(120%); }
+            90% { opacity: 1; filter: brightness(100%); }
+            95% { opacity: 0.85; filter: brightness(125%); }
+            100% { opacity: 1; filter: brightness(100%); }
+        }
+
+        .flicker-active {
+            animation: flicker 1s infinite step-end;
         }
 
         @media (max-width: 1024px) {
@@ -170,6 +223,8 @@
     </style>
 </head>
 <body>
+    <div class="large-text">the last of data</div>
+    <div class="gallery-header">left behind DLC websites</div>
     <div class="gallery">
         <div class="thumbnail">
             <a href="coloradomountainplaza.com/index.html" target="_blank">
@@ -225,6 +280,10 @@
             </a>
             <p>Weston's Pharmacy</p>
         </div>
+    </div>
+
+    <div class="gallery-header">notes and files</div>
+    <div class="gallery">
         <div class="thumbnail">
             <a href="pdf_exports/TheLastofUsPart1-Files.pdf" target="_blank">
                 <img src="images/fedra_poster.png" alt="PDF 1">
@@ -243,11 +302,31 @@
             </a>
             <p>TheLastofUsPart2-SeattleMap.pdf</p>
         </div>
+        <div class="thumbnail">
+            <a href="pdf_exports/TheLastofUsPart2-Single-Side-Files.pdf" target="_blank">
+                <img src="images/single_side_files.png" alt="PDF 3">
+            </a>
+            <p>TheLastofUsPart2-Single-Side-Files.pdf</p>
+        </div>
     </div>
-    <div class="large-text">The Last of Data</div>
-
     <div class="source-code-reader">
         source code available here: <a href="https://github.com/ddmunhoz/thelastofwebsites" target="_blank">https://github.com/ddmunhoz/thelastofwebsites</a>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const thumbnails = document.querySelectorAll('.thumbnail img');
+
+            thumbnails.forEach(thumbnail => {
+                thumbnail.addEventListener('mouseenter', () => {
+                    thumbnail.classList.add('flicker-active');
+                });
+
+                thumbnail.addEventListener('mouseleave', () => {
+                    thumbnail.classList.remove('flicker-active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
