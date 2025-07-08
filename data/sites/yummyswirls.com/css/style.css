@@ -1,0 +1,153 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+
+body{
+	background-color: #eaeaea;
+	font-family: 'Raleway', sans-serif;
+}
+
+p, li{
+	color: #373737;
+}
+
+a{
+	color:inherit;
+	text-decoration: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a:hover{
+	text-decoration: none;
+	color:inherit;
+	cursor:pointer;
+}
+
+body{
+	background: #e5e3df url(../images/bg.jpg) repeat;
+}
+
+#container{
+	background: url(../images/container_bg.png) repeat;
+	width:905px;
+	height: 695px;
+	margin:0 auto;
+	z-index: 0;
+}
+
+.logo{
+	position: relative;
+	width:170px;
+	height: 72px;
+	top:95px;
+	left:350px;
+}
+
+#nav *{
+	float:left;
+	color:#e36e80;
+	font-weight: 600;
+	position: relative;
+	top:45px;
+	left:55px;
+	font-size: 15px;
+}
+
+#nav li:nth-child(1){
+	margin:0 45px 0 0;
+}
+
+#nav li:nth-child(2){
+	margin:0 315px 0 0;
+}
+
+#nav li:nth-child(3){
+	margin:0 35px 0 0;
+}
+
+#row_one{
+	position: relative;
+	top:130px;
+	left:45px;
+	float: left;
+}
+
+#row_two{
+	position: relative;
+	top:130px;
+	left:45px;
+	float: left;
+}
+
+.fall, .fotm, .franchise, .fundraising, .gift_cards, .twitter{
+	float:left;
+}
+
+.fall{
+	margin:0 30px 0 0;
+}
+
+.franchise, .fundraising, .gift_cards{
+	margin:0 30px 0 0;
+}
+
+.gift_cards{
+	position: relative;
+	bottom: 6px;
+}
+
+#footer{
+	position: relative;
+	top: 150px;
+	font-size: 12px;
+	width:430px;
+	margin: 0 auto;
+	font-weight: 600;
+}
+
+#footer ul li{
+	float:left;
+	margin-right: 20px;
+}
+
+#logo_error{
+	position: relative;
+	top:225px;
+	width: 378px;
+	margin:0 auto;
+}
+
+#footer.si_ling_si{
+	top:423px;
+}
