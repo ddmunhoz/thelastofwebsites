@@ -26,7 +26,7 @@
             font-style: normal;
         }
         @font-face {
-            font-family: 'TheLastOfDataFont'; /*  "THE LAST OF US." on the left page. */
+            font-family: 'TheLastOfDataFont'; /* "THE LAST OF US." on the left page. */
             src: url('res/thelastfont.ttf') format('truetype'); 
             font-weight: normal;
             font-style: normal;
@@ -415,6 +415,93 @@
                 height: auto;
             }
         }
+
+        /* --- NEW: SECRET OVERLAY STYLES --- */
+        #secret-overlay {
+            position: fixed; /* Sits on top of all other content */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Dark, semi-transparent background */
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensures it's on the very top layer */
+            color: #ccc;
+            font-family: 'JournalBodyTextFont', monospace;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            opacity: 0; /* Start fully transparent for fade-in effect */
+            transition: opacity 0.5s ease-in-out; /* Smooth fade-in transition */
+        }
+        #secret-overlay.visible {
+            display: flex; /* Change to flex to enable centering */
+            opacity: 1; /* Fade to full opacity */
+        }
+        .overlay-content {
+            max-width: 600px;
+        }
+        .overlay-content h2 {
+            font-family: 'JournalHeaderFont', sans-serif;
+            color: #eee;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #555;
+            padding-bottom: 10px;
+        }
+        .overlay-content p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .close-overlay {
+            font-family: 'JournalBodyTextFont', monospace;
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 1px solid #555;
+            color: #aaa;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .close-overlay:hover {
+            background-color: #eee;
+            color: #111;
+        }
+
+        /* --- NEW & INTEGRATED: Vertical Link List Styles --- */
+        .vertical-link-list {
+            list-style-type: none;
+            margin: 30px 0; /* Adds space above and below the list */
+            padding: 0;
+            width: 100%;
+            border: 1px solid #444; /* A border that matches the theme */
+            border-radius: 3px;
+            background-color: #1F1F1F; /* A dark background, consistent with thumbnails */
+            font-family: 'JournalBodyTextFont', monospace;
+        }
+
+        .vertical-link-list li a {
+            display: block;
+            color: #aaa; /* A light, readable color */
+            padding: 12px 16px;
+            text-decoration: none;
+            border-bottom: 1px solid #333; /* Separator line between links */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .vertical-link-list li:last-child a {
+            border-bottom: none; /* No line on the last item */
+        }
+
+        .vertical-link-list li a:hover {
+            background-color: #333;
+            color: white;
+        }
+
     </style>
 </head>
 <body>
@@ -424,8 +511,8 @@
      
            <p class="journal-left-description" id="leftDescription">
                 Here lies a collection of salvaged data fragments, recordings, and visual logs.
-                These entries offer a glimpse into the world before, and the struggles within it.
-                Proceed with caution; some data may be corrupted or distressing.
+                
+                <p>It can't be for: ...
                 <br><br><p></p>
                 *salvager's note: no ownership is asserted for these fragments. owners may request removal via github.
             </p>
@@ -434,6 +521,7 @@
         <div class="right-page-top-nav">
             <a href="#websites-section">websites</a>
             <a href="#artifacts-section">artifacts</a>
+            <a href="#lostfiles-section">lost files</a>
         </div>
 
         <div class="journal-page-content-right">
@@ -537,59 +625,165 @@
                         </a>
                         <p>Single-Side Files</p>
                     </div>
+                    <div class="thumbnail">
+                        <a href="artifacts/TheLastofUsPart2-DoubleSidedFiles.pdf" target="_blank"
+                        data-description="Miscellaneous double-sided files and notes collected from The Last of Us Part 2.">
+                            <img src="images/double_side_files.png" alt="TLOU Part 2 Files">
+                        </a>
+                        <p>Double-Sided Files</p>
+                    </div>
                 </div>
             </section>
 
+            <section id="lostfiles-section">
+                <div class="gallery-header">lost files</div>
+                    <div class="gallery">
+                        <div class="thumbnail">
+                            <a href="artifacts/tlou-ps3-manual.pdf" target="_blank"
+                            data-description="Archived TLOU PS3 manual, a digital copy of the original game manual.">
+                                <img src="images/tlou1_ps3_manual.png" alt="TLOU PS3 manual">
+                            </a>
+                            <p>TLOU PS3 manual</p>
+                        </div>
+                        <div class="thumbnail">
+                            <a href="artifacts/tlou-review-disc.png" target="_blank"
+                            data-description="Archived TLOU PS3 review disc, a digital copy of the original game review disc.">
+                                <img src="images/tlou-review-disc.png" alt="TLOU PS3 review disc">
+                            </a>
+                            <p>TLOU PS3 review disk</p>
+                        </div>
+                        <div class="thumbnail">
+                            <a href="artifacts/tlou-ps3-cd-inlay-high-res.tif" target="_blank"
+                            data-description="Archived TLOU PS3 disc inlay, a high-resolution digital copy of the original.">
+                                <img src="images/tlou-ps3-cd-inlay-high-res.png" alt="TLOU PS3 disc inlay">
+                            </a>
+                            <p>TLOU PS3 disc inlay</p>
+                        </div>
+                    </div>
+            </section>
             <div class="source-code-reader">
                 source code available here: <a href="https://github.com/ddmunhoz/thelastofwebsites" target="_blank">https://github.com/ddmunhoz/thelastofwebsites</a>
             </div>
         </div>
     </div>
+    
+    <div id="secret-overlay">
+        <div class="overlay-content">
+            <h2>A Faint Hope</h2>
+            <p>
+                In a world of decay, some things endure. Scraps of data, echoes of the past... and the will to keep going. 
+                You found this message because you were looking for something more. Maybe we all are.
+            </p>
+            
+            <section id="secret-section">
+                 <div class="gallery-header">DISCLAIMER</div>
+                   <br>Please DO NOT REDISTRIBUTE the content below. If you can afford, consider buying these items to support the creators of the things you love. Links below:<br>
+                 <ul class="vertical-link-list">
+                    <li><a href="https://www.amazon.ca/Art-Last-Us-Part-II/dp/1506713769/ref=sr_1_2?crid=33JMWH5ZC9BDM&dib=eyJ2IjoiMSJ9.W_T-V7a5ezQ7A_Y3xAVGVDiyyDhxMH0Up-7BMMLe1CaMkLOJZsXowZFqxNn3Ir9d.2DmWQ_YYNxtgj6ye1MJOXg8iwkQg9Bt3BQMhmJ8VgPg&dib_tag=se&keywords=the+last+of+us+remastered+bradygames+guide&qid=1752166403&sprefix=the+last+of+us+remastered+bradygames+guide%2Caps%2C130&sr=8-2
+" target="_blank">The Art of The Last of Us Part II</a></li>
+                    <li><a href="https://www.amazon.ca/Last-Remastered-Signature-Strategy-Guide/dp/0744015545/ref=sr_1_1?crid=33JMWH5ZC9BDM&dib=eyJ2IjoiMSJ9.W_T-V7a5ezQ7A_Y3xAVGVDiyyDhxMH0Up-7BMMLe1CaMkLOJZsXowZFqxNn3Ir9d.2DmWQ_YYNxtgj6ye1MJOXg8iwkQg9Bt3BQMhmJ8VgPg&dib_tag=se&keywords=the+last+of+us+remastered+bradygames+guide&qid=1752166403&sprefix=the+last+of+us+remastered+bradygames+guide%2Caps%2C130&sr=8-1" target="_blank">The Last of Us Remastered Guide</a></li>
+        
+                </ul>
+            </section>
+            <div class="gallery-header">Secret Files</div>
+                <div class="gallery">
+                    <div class="thumbnail">
+                        <a href="artifacts/the-art-of-tlou-part-II.pdf" target="_blank"
+                           data-description="TLOU Part II artbook">
+                            <img src="images/the-art-of-tlou-part-II.png" alt="TLOU Part II artbook">
+                        </a>
+                        <p>TLOU Part II artbook</p>
+                    </div>
+                       <div class="thumbnail">
+                        <a href="artifacts/tlou-remastered-guide.pdf" target="_blank"
+                           data-description="TLOU Part I remastered guide">
+                            <img src="images/tlou-remastered-guide.png" alt="TLOU Part I remastered guide">
+                        </a>
+                        <p>TLOU Part I remastered guide</p>
+                    </div>
+                </div>  
+            <span class="close-overlay">[ CLOSE ]</span>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const thumbnails = document.querySelectorAll('.thumbnail img');
             const descriptionArea = document.getElementById('leftDescription');
-            const originalDescription = descriptionArea.textContent.trim(); // Storing the original text for when you mouse away
+            const originalDescription = descriptionArea.innerHTML; // Use innerHTML to preserve line breaks
 
             thumbnails.forEach(thumbnail => {
                 const anchor = thumbnail.closest('a');
-                if (!anchor) return; // Just making sure there's actually a link there
+                if (!anchor) return; 
 
-                const descriptionText = anchor.dataset.description; // Grabbing the description from the data attribute
+                const descriptionText = anchor.dataset.description; 
 
                 thumbnail.addEventListener('mouseenter', () => {
-                    thumbnail.classList.add('flicker-active'); // Turn on the flicker effect!
+                    thumbnail.classList.add('flicker-active'); 
                     if (descriptionText) {
-                        descriptionArea.textContent = descriptionText; // Swap the description on the left
+                        descriptionArea.textContent = descriptionText;
                     }
                 });
 
                 thumbnail.addEventListener('mouseleave', () => {
-                    thumbnail.classList.remove('flicker-active'); // Turn off the flicker
-                    descriptionArea.textContent = originalDescription; // Put the original text back
+                    thumbnail.classList.remove('flicker-active'); 
+                    descriptionArea.innerHTML = originalDescription; 
                 });
             });
 
             const navLinks = document.querySelectorAll('.right-page-top-nav a');
-            const scrollContainer = document.querySelector('.journal-page-content-right'); // This is the part that actually scrolls
+            const scrollContainer = document.querySelector('.journal-page-content-right'); 
 
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
-                    e.preventDefault(); // Stop the default link behavior (jumping directly)
+                    e.preventDefault(); 
 
-                    const targetId = this.getAttribute('href'); // Get the section ID (like #websites-section)
-                    const targetElement = document.querySelector(targetId); // Find that section
+                    const targetId = this.getAttribute('href'); 
+                    const targetElement = document.querySelector(targetId); 
 
                     if (targetElement && scrollContainer) {
-                        const targetOffsetTop = targetElement.offsetTop; // How far down is the section?
+                        const targetOffsetTop = targetElement.offsetTop; 
 
                         scrollContainer.scrollTo({
                             top: targetOffsetTop,
-                            behavior: 'smooth' // Scroll smoothly to it, nice!
+                            behavior: 'smooth' 
                         });
                     }
                 });
+            });
+
+            // --- NEW: SECRET OVERLAY SCRIPT ---
+
+            // The specific phrase to type to reveal the overlay.
+            const targetSequence = "nothing";
+            let currentSequence = '';
+
+            // Listen for any key presses on the page.
+            document.addEventListener('keyup', (e) => {
+                // Add the typed character to our tracking string.
+                currentSequence += e.key;
+
+                // Check if the end of our current string matches the target phrase.
+                // This is more flexible than checking for an exact match from the start.
+                if (currentSequence.toLowerCase().endsWith(targetSequence)) {
+                    // If it matches, show the overlay.
+                    document.getElementById('secret-overlay').classList.add('visible');
+                    // Reset the sequence so it doesn't trigger again immediately.
+                    currentSequence = ''; 
+                }
+
+                // To prevent the tracking string from getting too long and using up memory,
+                // we'll keep it trimmed to the length of the target phrase.
+                if (currentSequence.length > targetSequence.length) {
+                    currentSequence = currentSequence.slice(-targetSequence.length);
+                }
+            });
+
+            // Add functionality to the close button inside the overlay.
+            document.querySelector('.close-overlay').addEventListener('click', () => {
+                // Hide the overlay by removing the 'visible' class.
+                document.getElementById('secret-overlay').classList.remove('visible');
             });
         });
     </script>
